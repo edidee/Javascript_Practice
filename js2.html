@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>classwork on javascript</title>
+    <!-- <script>
+    var attendance = new Array(8);
+    attendance[0] = prompt('Welcome to work, Enter your name here');
+    attendance[1] = prompt('Welcome to work, Enter your name here');
+    attendance[2] = prompt('Welcome to work, Enter your name here');
+    attendance[3] = prompt('Welcome to work, Enter your name here');
+    attendance[4] = prompt('Welcome to work, Enter your name here');
+    attendance[5] = prompt('Welcome to work, Enter your name here');
+    attendance[6] = prompt('Welcome to work, Enter your name here');
+    attendance[7] = prompt('Welcome to work, Enter your name here');
+    var present
+    present = attendance[0]+", " +attendance[1]+", " +attendance[2]+", " +attendance[3]+", " +attendance[4]+", " +attendance[5]+", " +attendance[6]+" and " +attendance[7]+" are all present today";
+    alert(present);
+    </script> -->
+    <script>
+        alert("Attendance 1.0");
+        var student = new Array();
+        var today= []
+        var currenttime = []
+        var msg1=""
+        var msg2="" 
+        var i = 0;
+        var pw= 2552  
+        var latetime = [String(prompt("Enter the late time for today"))];
+        student[i] = prompt("Enter your Name(if Admin, enter Admin password: )");
+        today[i] = new Date();
+        currenttime[i] =String(today.getHours()+":"+today.getMinutes());
+        if (currenttime[i] <= latetime[0]){
+            msg1 = msg1 + student[i] +" "+ currenttime[i]+","
+        }
+        else{
+            msg2 = msg2 + student[i] + " "+ currenttime[i] + ","
+        }
+        while (student[i] !==pw){
+            i++
+            student[i] = prompt("Enter your name(If Admin, enter Admin password:)");
+            today[i] = new Date();
+            currenttime[i] = String(today[i].getHours()+":"+today[i].getMinutes());
+            if(student[i] != password){
+                if (currenttime[i] <= latetime[0]){
+                    msg1 = msg1+student[i]+" "+ currenttime[i]+","
+                }else{
+                    msg2 = msg2 + student[i]+" "+ currenttime[i]+","
+                }
+            }
+        }
+        alert("Early birds: " +msg1);
+        alert("Late comers: "+msg2);
+           
+
+    </script>
+
+</head> 
+<body>
+    
+</body>
+</html>

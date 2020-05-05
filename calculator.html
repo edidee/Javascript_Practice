@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>calculator</title>
+   <link rel="stylesheet" href="css/calculator.css">
+   <script>
+      var answer;
+      var enternum = 0;
+      var finalnum ;
+      var adder = 0;
+      var i = 0;
+      function display(num){
+      answer= document.getElementById('didi')
+      if (answer.placeholder == '0'){
+      answer.placeholder="";
+      }
+      if(i == 10){
+      cancel();
+      }
+      answer.placeholder += num;
+      answer.value = answer.placeholder
+      enternum = Number(answer.value);
+      finalnum = enternum;
+    }
+    function cancel(){
+       answer.value = 0;
+       answer.placeholder = "";
+       adder = 0;
+       enternum = 0;
+       i = 0;
+    }
+    function backspace(){
+       finalnum = String(enternum);
+       enternum = finalnum;
+       answer.placeholder = enternum.substring(0, enternum.length-1);
+       answer.value = enternum.substring(0, enternum.length-1);
+
+    }
+       function calculate(){
+         //  answer.value = 0;
+          answer.placeholder = "";
+          if(i == 1){
+             adder += enternum;
+             answer.value = adder;
+          }else if(i==2){
+             adder += -enternum;
+             answer.value = adder;
+          }else if(i==3){
+            adder = adder*enternum;
+             answer.value = adder;
+          }else if(i==4){
+            adder = adder/enternum;
+             answer.value = adder;
+          }else if(i ==0){
+             adder = finalnum;
+          }
+       }
+    function addition(){
+       calculate();
+       i = 1;
+    }
+    function subtration(){
+       calculate();
+       i=2;
+    }
+     function multiplication(){
+        calculate();
+        i=3;
+     }
+     function division(){
+        calculate();
+        i=4;
+     }
+     function result(){
+        if(i==1){
+           adder += enternum;
+           answer.value = adder;
+           i=10;
+        }else if(i==2){
+         adder += -enternum;
+           answer.value = adder;
+           i=10;
+        }else if(i==3){
+         adder =adder * enternum;
+           answer.value = adder;
+           i=10;
+        }else if(i==4){
+         adder =adder / enternum;
+           answer.value = adder;
+           i=10;
+        }
+     }
+
+   </script>
+</head>
+<body>
+   <div class="container">
+      <div class="textbox">
+         <input type="text" placeholder="0" id="didi" readonly>
+      </div>
+      <div class="div1">
+         <button class="btn1" onclick="backspace()">clear</button>
+         <button class="btn2" onclick="cancel()">cancel</button>
+      </div>
+      <hr>
+      <div class="div2">
+         <button class="btnnum" onclick="display('7')">7</button>
+         <button class="btnnum" onclick="display('8')">8</button>
+         <button class="btnnum" onclick="display('9')">9</button>
+         <button class="btnnum" onclick="multiplication()">x</button>
+      </div>
+      <div class="div3">
+         <button class="btnnum" onclick="display('4')">4</button>
+         <button class="btnnum" onclick="display('5')">5</button>
+         <button class="btnnum" onclick="display('6')">6</button>
+         <button class="btnnum" onclick="subtration()">-</button>
+      </div>
+      <div class="div3">
+         <button class="btnnum" onclick="display('1')">1</button>
+         <button class="btnnum" onclick="display('2')">2</button>
+         <button class="btnnum" onclick="display('3')">3</button>
+         <button class="btnnum" onclick="addition()">+</button>
+      </div>
+      <div class="div4">
+         <button class="btnnum" onclick="display('0')">0</button>
+         <button class="btnnum" onclick="display('.')">.</button>
+         <button class="btnnum" onclick="division()">/</button>
+         <button class="btnnum" onclick="result()">=</button>
+      </div>
+   </div> 
+</body>
+</html>

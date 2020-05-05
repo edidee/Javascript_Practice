@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        alert("Attendia 1.1");
+        var admin_pass = prompt("Enter Admin password");
+        var latetime = prompt("Kindly Supply the Late Time for Today (H:M)");
+        var latetimearr = latetime.split(":");
+        var admipass = null;
+        var earrlymsg = [];
+        var latemsg = [];
+        //loop for staff to enter their names and the system registers thier entring time
+        while(admipass == null || admipass != admin_pass){
+            //promt staff
+            admipass = prompt("Enter your Name. If admin enter your password");
+            //check if admin
+            if(admipass == admin_pass){
+                alert("Early Birds: " +  earrlymsg.join(" , "));
+                alert("Late Comers: " +  latemsg.join(" , "));
+            }else{
+                var name = admipass;
+                var dt = new Date();
+                var hr = dt.getHours();
+                var mi = dt.getMinutes();
+                var lathr = Number(latetimearr[0]);
+                var latmi = Number(latetimearr[1]);
+                if(hr < lathr || (hr == lathr && mi <= latmi)){
+                    var nxtpos = earrlymsg.length;
+                    earrlymsg[nxtpos] = name + " " + hr + ":" + mi;
+                }else{
+                    var nxtpos = latemsg.length;
+                    latemsg[nxtpos] = name + " " + hr + ":" + mi;
+                }
+            }
+        
+        }
+        
+        
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

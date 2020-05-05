@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OOP</title>
+    <link rel="stylesheet" href="css/calculator.css">
+    <script>
+     function Calculator(){
+        this.answer;
+        this.enternum = 0;
+        this.finalnum ;
+        this.adder = 0;
+        this.answer2;
+        this.i = 0;
+        this.display2=function(numb){
+        this.answer2 = document.getElementById('dee')
+        if (this.answer2.placeholder =="0"){
+           this.answer2.placeholder ="";
+        }
+        if(numb == "+" && this.i !=10){
+         this.answer2.placeholder += this.enternum+"+";  
+        }else if(numb == "-" && this.i !=10){
+           this.answer2.placeholder += this.enternum+ "-";
+        }else if(numb == "*" && this.i !=10){
+         this.answer2.placeholder += this.enternum+ "*";
+        }else if(numb == "/" && this.i !=10){ 
+         this.answer2.placeholder += this.enternum+ "/";
+        }else if(numb == "=" && this.i !=10){
+         this.answer2.placeholder += this.enternum;
+        }else if(numb == "+" && this.i ==10){
+         this.answer2.placeholder += this.answer2.placeholder+ "+";
+        }else if(numb == "-" && this.i ==10){
+         this.answer2.placeholder += this.answer2.placeholder+ "-";   
+        }else if(numb == "*" && this.i ==10){
+         this.answer2.placeholder += this.answer2.placeholder+ "*";   
+        }else if(numb == "/" && this.i ==10){
+         this.answer2.placeholder += this.answer2.placeholder+ "/";     
+        }else if(numb == "=" && this.i ==10){
+         this.answer2.placeholder += this.answer2.placeholder;  
+        }
+      }
+
+        this.display=function(num){
+        this.answer= document.getElementById('didi')
+        if (this.answer.placeholder == '0'){
+        this.answer.placeholder="";
+        }
+        if(this.i == 10){
+        this.cancel();
+        }
+        this.answer.placeholder += num;
+        this.answer.value = this.answer.placeholder
+        this.enternum = Number(this.answer.value);
+        this.finalnum = this.enternum;
+      }
+      this.cancel= function(){
+         this.answer.value = 0;
+         this.answer.placeholder = "";
+         this.adder = 0;
+         this.enternum = 0;
+         this.i = 0;
+         // this.answer2.value = 0;
+         this.answer2.placeholder =""
+      }
+      this.backspace = function(){
+         // this.finalnum = String(this.enternum);
+         // this.enternum = this.finalnum;
+         // this.answer.placeholder = this.enternum.substring(0, this.enternum.length-1);
+         // this.answer.value = this.enternum.substring(0, this.enternum.length-1);
+         var clear = document.getElementById("")
+      }
+         this.calculate = function(){
+           //  answer.value = 0;
+            this.answer.placeholder = "";
+            if(this.i == 1){
+               this.adder += this.enternum;
+               this.answer.value = this.adder;
+            }else if(this.i==2){
+               this.adder += -this.enternum;
+               this.answer.value = this.adder;
+            }else if(this.i==3){
+              this.adder = this.adder*this.enternum;
+               this.answer.value = this.adder;
+            }else if(this.i==4){
+              this.adder = this.adder/this.enternum;
+              this.answer.value = this.adder;
+            }else if(this.i ==0){
+               this.adder = this.finalnum;
+            }
+         }
+    this.addition = function(){
+       this.display2("+")
+         this.calculate();
+         this.i = 1;
+      }
+      this.subtration = function(){
+         this.display2("-")
+         this.calculate();
+         this.i=2;
+      }
+    this.multiplication = function(){
+       this.display2("*")
+          this.calculate();
+          this.i=3;
+       }
+       this.division = function(){
+          this.display2("/")
+          this.calculate();
+          this.i=4;
+       }
+       this.result = function(){
+          if(this.i==1){
+             this.adder += this.enternum;
+             this.answer.value = this.adder;
+             this.display2("=");
+             this.i=10;
+          }else if(this.i==2){
+           this.adder += -this.enternum;
+             this.answer.value = this.adder;
+             this.display2("=");
+             this.i=10;
+          }else if(this.i==3){
+           this.adder =this.adder * this.enternum;
+             this.answer.value = this.adder;
+             this.display2("=");
+             this.i=10;
+          }else if(this.i==4){
+           this.adder =this.adder / this.enternum;
+             this.answer.value = this.adder;
+             this.display2("=");
+            this.i=10;
+          }
+       }
+     
+   }
+     var mycalculator = new Calculator();
+     </script>
+  </head>
+  <body>
+     <div class="container">
+        <div class="textbox">
+            <input type="text" placeholder="0" id="dee" readonly>
+           <input type="text" placeholder="0" id="didi" readonly>
+        </div>
+        <div class="div1">
+           <button class="btn1" onclick="mycalculator.backspace()">clear</button>
+           <button class="btn1" onclick="mycalculator.cancel()">cancel</button>
+        </div>
+        <hr>
+        <div class="div2">
+           <button class="btnnum" onclick="mycalculator.display('7')">7</button>
+           <button class="btnnum" onclick="mycalculator.display('8')">8</button>
+           <button class="btnnum" onclick="mycalculator.display('9')">9</button>
+           <button class="btnnum" onclick="mycalculator.multiplication()">x</button>
+        </div>
+        <div class="div3">
+           <button class="btnnum" onclick="mycalculator.display('4')">4</button>
+           <button class="btnnum" onclick="mycalculator.display('5')">5</button>
+           <button class="btnnum" onclick="mycalculator.display('6')">6</button>
+           <button class="btnnum" onclick="mycalculator.subtration()">-</button>
+        </div>
+        <div class="div3">
+           <button class="btnnum" onclick="mycalculator.display('1')">1</button>
+           <button class="btnnum" onclick="mycalculator.display('2')">2</button>
+           <button class="btnnum" onclick="mycalculator.display('3')">3</button>
+           <button class="btnnum" onclick="mycalculator.addition()">+</button>
+        </div>
+        <div class="div4">
+           <button class="btnnum" onclick="mycalculator.display('0')">0</button>
+           <button class="btnnum" onclick="mycalculator.display('.')">.</button>
+           <button class="btnnum" onclick="mycalculator.division()">/</button>
+           <button class="btnnum" onclick="mycalculator.result()">=</button>
+        </div>
+     </div> 
+
+    
+</body>
+</html>
